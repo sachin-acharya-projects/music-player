@@ -1,0 +1,57 @@
+@import "../../style/settings";
+
+.searchBox {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 10px;
+    padding-top: 3px;
+
+    :global {
+        .input-field {
+            appearance: none;
+            max-width: 350px;
+            width: 100%;
+            padding: 10px;
+            outline: none;
+            border: 1px solid $dark;
+            border-right: none;
+            background-color: $secondaryBackground;
+            border-radius: 5px 0 0 5px;
+            color: rgba(#fff, 0.712);
+            font-size: 13px;
+
+            &[placeholder]:empty::before {
+                content: attr(placeholder);
+                color: rgba(238, 238, 238, 0.336);
+            }
+        }
+
+        .search-btn {
+            border: 1px solid $dark;
+            border-left: none;
+            width: 50px;
+            display: grid;
+            place-content: center;
+            color: white;
+            background-color: $secondaryBackground;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            user-select: none;
+            transition: 0.2s font-size linear;
+
+            &:active {
+                font-size: 20px;
+            }
+        }
+
+        .input-area {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+    }
+}
