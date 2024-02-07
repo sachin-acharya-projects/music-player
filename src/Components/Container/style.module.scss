@@ -115,6 +115,7 @@
                     height: 100%;
                     border-radius: 5px;
                     overflow: hidden;
+                    pointer-events: none;
 
                     img {
                         width: 100%;
@@ -218,6 +219,7 @@
 
     span {
         transition: 0.3s scale linear;
+        pointer-events: none;
     }
     &:active {
         span {

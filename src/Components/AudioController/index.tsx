@@ -12,11 +12,11 @@ export default function index() {
         >
             <div className="float-container">
                 <div className="thumbnail-area">
-                    <img src={audio.audio.thumbnail_url} alt="" />
+                    <img src={audio.audio.thumbnail} alt="" />
                 </div>
                 <div className="control-information">
                     <div className="music-info">
-                        <p className="title">{audio.audio.video_title}</p>
+                        <p className="title">{audio.audio.title}</p>
                         <p className="channel">
                             <span>{audio.audio.channel}</span>
                             <span>{audio.audio.duration}</span>

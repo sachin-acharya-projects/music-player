@@ -1,8 +1,10 @@
 import { Container, SearchBox } from ".."
+// import { useAudioContext } from "../../Context/AudioContext"
 import VideoData from "../../Utility/Data.json"
 import style from "./style.module.scss"
 
 export default function ContainWrapper() {
+    // const audio = useAudioContext()
     return (
         <div className={style.container}>
             <SearchBox placeholder="Search for the Music" />
@@ -12,6 +14,8 @@ export default function ContainWrapper() {
                     data={VideoData}
                     title="Discover"
                     subtitle="Discover new music to your liking"
+                    // onPress={(video_id) => {
+                    // }}
                 />
 
                 <Container

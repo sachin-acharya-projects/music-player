@@ -9,6 +9,8 @@
     flex-direction: column;
 
     position: relative;
+    scroll-padding-top: 10px;
+
 
     &::-webkit-scrollbar {
         width: 0;

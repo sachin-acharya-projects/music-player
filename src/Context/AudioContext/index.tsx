@@ -1,4 +1,5 @@
-import { PropsWithChildren, createContext, useContext } from "react"
+import { PropsWithChildren, createContext, useContext, useState } from "react"
+// import { API_BASE } from "../../Utility/Constant"
 
 type AudioPlayerEvent =
     | "durationchange"
@@ -55,6 +56,14 @@ class AudioPlayer {
         if (!isPaused) this.play
     }
 
+    // async loadSrc(video_id: string) {
+    //     try {
+    //     } catch(e) {
+    //         console.error(e)
+    //         return Promise<null>
+    //     }
+    // }
+
     set volume(vol: number) {
         if (vol >= 0 && vol <= 1) {
             this.audioPlayer.volume = vol
@@ -83,30 +92,112 @@ class AudioPlayer {
     }
 }
 
-type AudioContextProps = {
-    audio: {
-        video_id?: string
-        thumbnail_url: string
-        video_title: string
-        channel: string
-        duration: string
+class AudioState {
+    private _video_id?: string
+    private _thumbnail_url: string
+    private _video_title: string
+    private _channel: string
+    private _duration: string
+
+    private _setVideoTitle?: (title: string) => void
+    private _setThumbnailUrl?: (thumbnail: string) => void
+    private _setChannel?: (channel: string) => void
+    private _setDuration?: (duration: string) => void
+    private _setVideoID?: (id?: string) => void
+    constructor(
+        video_title: string,
+        thumbnail_url: string,
+        channel: string,
+        duration: string,
+        video_id?: string,
+        setVideoTitle?: (title: string) => void,
+        setThumbnailUrl?: (thumbnail: string) => void,
+        setChannel?: (channel: string) => void,
+        setDuration?: (duration: string) => void,
+        setVideoID?: (video_id?: string) => void
+    ) {
+        this._video_id = video_id
+        this._video_title = video_title
+        this._thumbnail_url = thumbnail_url
+        this._channel = channel
+        this._duration = duration
+
+        this._setVideoTitle = setVideoTitle
+        this._setThumbnailUrl = setThumbnailUrl
+        this._setChannel = setChannel
+        this._setDuration = setDuration
+        this._setVideoID = setVideoID
     }
+
+    get title() {
+        return this._video_title
+    }
+    set title(title: string) {
+        this._setVideoTitle?.(title)
+    }
+
+    get channel() {
+        return this._channel
+    }
+    set channel(channel: string) {
+        this._setChannel?.(channel)
+    }
+
+    get duration() {
+        return this._duration
+    }
+    set duration(duration: string) {
+        this._setDuration?.(duration)
+    }
+
+    get thumbnail() {
+        return this._thumbnail_url
+    }
+    set thumbnail(src: string) {
+        this._setThumbnailUrl?.(src)
+    }
+
+    get video_id(): string | undefined {
+        return this._video_id
+    }
+    set video_id(id: string) {
+        this._setVideoID?.(id)
+    }
+}
+
+type AudioContextProps = {
+    audio: AudioState
     playback: AudioPlayer
 }
-const defaultContext: AudioContextProps = {
-    audio: {
-        thumbnail_url: "",
-        video_title: "",
-        channel: "",
-        duration: "",
-    },
+const AudioContext = createContext<AudioContextProps>({
+    audio: new AudioState("", "", "", "", undefined),
     playback: new AudioPlayer(),
-}
-const AudioContext = createContext<AudioContextProps>(defaultContext)
+})
 
 export default function AudioContextProvider({ children }: PropsWithChildren) {
+    const [title, setTitle] = useState("")
+    const [channel, setChannel] = useState("")
+    const [duration, setDuration] = useState("")
+    const [thumbnail, setThumbnail] = useState("")
+    const [video_id, setVideoID] = useState<string | undefined>(undefined)
     return (
-        <AudioContext.Provider value={defaultContext}>
+        <AudioContext.Provider
+            value={{
+                audio: new AudioState(
+                    title,
+                    thumbnail,
+                    channel,
+                    duration,
+                    video_id,
+                    setTitle,
+                    setThumbnail,
+                    setChannel,
+                    setDuration,
+                    setVideoID
+                ),
+                playback: new AudioPlayer(),
+            }}
+        >
             {children}
         </AudioContext.Provider>
     )

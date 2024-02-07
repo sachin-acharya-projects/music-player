@@ -1,6 +1,6 @@
 import { memo, useState } from "react"
-import style from "./style.module.scss"
 import { useAudioContext } from "../../Context/AudioContext"
+import style from "./style.module.scss"
 
 const PAGINATION_COUNT: number = 2
 
@@ -115,7 +115,12 @@ const DataDisplay = memo(
                 key={`item-${index}`}
                 data-videoid={video_id}
                 data-index={index}
-                onClick={() => onPress?.(video_id)}
+                onClick={(e) => {
+                    //@ts-ignore
+                    if (e.target.tagName === "DIV") {
+                        onPress?.(video_id)
+                    }
+                }}
                 title={title}
             >
                 <div className="thumbnail-area">
