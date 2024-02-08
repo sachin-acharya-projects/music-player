@@ -1,0 +1,7 @@
+# Server
+flask
+Flask-Caching
+
+# YouTube
+youtube-search-python
+pytube @ git+https://github.com/pytube/pytube
