@@ -30,7 +30,7 @@ jobs:
 
             - name: Getting the latest commit message
               id: commit_msg
-              run: echo "::set-output name=message::$(git log -1 --pretty=%B)"
+              run: echo "message=$(git log -1 --pretty=%B)" >> $GITHUB_OUTPUT
 
             - name: Publish Page
               run: npm run deploy -- -m "${{ steps.commit_msg.outputs.message }}"
