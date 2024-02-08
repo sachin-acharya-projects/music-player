@@ -1,37 +1,49 @@
-$blue: #007bff;
-$indigo: #6610f2;
-$purple: #6f42c1;
-$pink: #e83e8c;
-$red: #dc3545;
-$orange: #fd7e14;
-$yellow: #ffc107;
-$green: #28a745;
-$teal: #20c997;
-$cyan: #17a2b8;
-$white: #fff;
-$gray: #6c757d;
-$gray-dark: #343a40;
-$primary: #007bff;
-$secondary: #6c757d;
-$success: #28a745;
-$info: #17a2b8;
-$warning: #ffc107;
-$danger: #dc3545;
-
 // Using
 $primaryBackground: rgb(10, 24, 61);
 $secondaryBackground: rgb(8, 25, 45);
+
+$primaryWhite: rgba(#ffffff, 0.87);
+$primaryBlack: #343a406c;
+
 $light: #f8f9fa;
 $dark: #343a40;
+$white: #fff;
 
 $poppins: "Poppins", sans-serif;
 $roboto: "Roboto", sans-serif;
 
+// SideNav Only
+$dropShadowColor: rgb(206, 205, 205);
+$listItemColor: rgba(238, 238, 238, 0.521);
+$listItemColorLighter: rgba(238, 238, 238, 0.336);
+$listActiveColor: #adadad;
+
 @mixin sectionSize {
     width: 100%;
     height: 100%;
+    padding-bottom: 5px;
+
     display: flex;
     flex-direction: column;
-    padding-bottom: 5px;
     justify-content: center;
+}
+
+@mixin successColor {
+    background-color: #ecfdf3;
+    color: #10913b;
+}
+
+@mixin errorColor {
+    background-color: #fff0f0;
+    color: #e60000;
+}
+
+@mixin infoColor {
+    background-color: #f0f8ff;
+    color: #2c87e1;
+}
+
+@mixin warningColor {
+    background-color: #fffcf0;
+    color: #dc7609;
 }

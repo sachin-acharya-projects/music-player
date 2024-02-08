@@ -41,7 +41,7 @@
 
     :global {
         .title-area {
-            border-left: 7px solid rgba(#fff, 0.1); // 0.445
+            border-left: 7px solid rgba($white, 0.1); // 0.445
             overflow: hidden;
             white-space: nowrap;
 
@@ -69,7 +69,7 @@
                 to {
                     width: 100%;
                     padding-inline: 17px;
-                    border-color: rgba(#fff, 0.445);
+                    border-color: rgba($white, 0.445);
                 }
             }
         }
@@ -180,7 +180,7 @@
                         transition: 0.3s all linear;
                         user-select: none;
                         &:hover {
-                            color: #fff;
+                            color: $white;
                         }
 
                         &:active {
@@ -214,7 +214,7 @@
 
     &:hover {
         background-color: $secondaryBackground;
-        color: #ffffff;
+        color: $white;
     }
 
     span {

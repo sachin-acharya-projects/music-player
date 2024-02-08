@@ -21,12 +21,12 @@
             border-right: none;
             background-color: $secondaryBackground;
             border-radius: 5px 0 0 5px;
-            color: rgba(#fff, 0.712);
+            color: rgba($white, 0.712);
             font-size: 13px;
 
             &[placeholder]:empty::before {
                 content: attr(placeholder);
-                color: rgba(238, 238, 238, 0.336);
+                color: $listItemColorLighter;
             }
         }
 
@@ -36,7 +36,7 @@
             width: 50px;
             display: grid;
             place-content: center;
-            color: white;
+            color: $white;
             background-color: $secondaryBackground;
             border-radius: 0 5px 5px 0;
             cursor: pointer;
